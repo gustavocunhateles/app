@@ -5,3 +5,7 @@ Inserindo produtos:
 Editando produtos:
 
 ![app2](https://user-images.githubusercontent.com/42899628/66792629-f8200600-eecf-11e9-9581-651fc6b610bf.JPG)
+
+Excluindo produtos:
+
+![app3](https://user-images.githubusercontent.com/42899628/66792791-b5aaf900-eed0-11e9-8211-648cd6b797a5.JPG)
