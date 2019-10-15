@@ -1,1 +1,1 @@
-![image](C:\Users\gustavoct27\Desktop\app.jpg)
+![image](C:/Users/gustavoct27/Desktop/app.jpg)
