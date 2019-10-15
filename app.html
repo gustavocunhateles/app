@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="app">
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	
 	<title>Loja Virtual</title>	
 	
@@ -77,7 +77,7 @@
 		    $scope.users = [];
 
 		    $scope.msg = function() {
-		      alert("Não foi possível calcular o tempo total de pausa");
+		      alert("NÃ£o foi possÃ­vel calcular o tempo total de pausa");
 		    };
 
 		    $scope.erro = function() {
@@ -99,7 +99,7 @@
 			//Adicionando no fim da array lista todos os dados do objeto i dessa array
 			$scope.users.push(angular.copy(user));
 
-			//Apaga o registro copiado para evitar duplicidade na adição de novos resgistros
+			//Apaga o registro copiado para evitar duplicidade na adiÃ§Ã£o de novos resgistros
 			delete $scope.user;
 		    };
 
@@ -145,7 +145,7 @@
 
 	  	<h3 id="titulo"><b>Produtos</b></h3>
 
-	  	   <!--Cabeçalho da tabela-->
+	  	   <!--CabeÃ§alho da tabela-->
 		   <tr>
 			<th id="coluna1">Tipo</th>
 			<th id="coluna2">Valor</th>	
@@ -154,7 +154,7 @@
 			<th></th>
 		    </tr>
 			
-		    <!--Exibição recursiva dos campos digitados em update ou !update-->
+		    <!--ExibiÃ§Ã£o recursiva dos campos digitados em update ou !update-->
 		    <tr ng-repeat="user in users">
 
 	   	      <td class="col-md-3" id="coluna1">{{user.tipo}}</td>
@@ -179,7 +179,7 @@
 	    <select id="opcoes" class="form-control" ng-model="update.tipo">
 			<option value="">Tipo de produto</option>
 			<option value="Telefone">Telefone</option>
-			<option value="Relógio">Relógio</option>
+			<option value="RelÃ³gio">RelÃ³gio</option>
 			<option value="TV">TV</option>
 	    </select>
 	    -->
