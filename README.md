@@ -1,7 +1,5 @@
 Este é um projeto em AngularJS de uma Loja Virtual que possui as funcionalidades básicas de inclusão, edição e exclusão de produtos.
 
-Link do sistema:
-
 https://gustavocunhateles.github.io/loja/
 
 Inserindo produtos:
