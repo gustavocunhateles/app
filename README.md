@@ -1,6 +1,6 @@
 Link do sistema:
 
-https://gustavocunhateles.github.io/app/index.html
+https://gustavocunhateles.github.io/loja/
 
 Inserindo produtos:
 
