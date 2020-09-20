@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="app">
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<head>
 	
 	<title>Loja Virtual</title>	
-	
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
 	
 	<style>
@@ -76,10 +76,6 @@
 
 		    $scope.users = [];
 
-		    $scope.msg = function() {
-		      alert("Não foi possível calcular o tempo total de pausa");
-		    };
-
 		    $scope.erro = function() {
 		      alert("Preencha todos os campos para cadastrar o produto.\n- Escolha um dos tipos\n- Digite um valor\n- Digite uma quantidade maior que zero");
 		    };
@@ -99,30 +95,19 @@
 			//Adicionando no fim da array lista todos os dados do objeto i dessa array
 			$scope.users.push(angular.copy(user));
 
-			//Apaga o registro copiado para evitar duplicidade na adição de novos resgistros
+			//Apaga o registro copiado para evitar duplicidade na adiÃ§Ã£o de novos resgistros
 			delete $scope.user;
 		    };
 
-			$scope.apagar = function(index) {
-				$scope.users.splice(index, 1);
-			};
-	
-			$scope.somar = function() {
-				alert($scope.user.duracao + "minuto(s) de pausa total");
-			};
-	
-			$scope.tempo = function(){
-	        		var inicio = document.getElementById("inicio").value;
-	        		var fim = document.getElementById("fim").value;
-	        		var duracao = fim - inicio;
-	        		alert(duracao);
-			};
+		    $scope.apagar = function(index) {
+			$scope.users.splice(index, 1);
+		    };
 	
 		    $scope.selecionados = function (users){
-				return lista.some(
-					function (user){
-						return user.selecionado;
-					});
+			return lista.some(
+				function (user){
+					return user.selecionado;
+				});
 		    };
     		
 		});
@@ -145,7 +130,7 @@
 
 	  	<h3 id="titulo"><b>Produtos</b></h3>
 
-	  	   <!--Cabeçalho da tabela-->
+	  	   <!--CabeÃ§alho da tabela-->
 		   <tr>
 			<th id="coluna1">Tipo</th>
 			<th id="coluna2">Valor</th>	
@@ -154,7 +139,7 @@
 			<th></th>
 		    </tr>
 			
-		    <!--Exibição recursiva dos campos digitados em update ou !update-->
+		    <!--ExibiÃ§Ã£o recursiva dos campos digitados em update ou !update-->
 		    <tr ng-repeat="user in users">
 
 	   	      <td class="col-md-3" id="coluna1">{{user.tipo}}</td>
@@ -174,18 +159,8 @@
 	</form>
 
 	  <form ng-if="update" name="atualizar" method="post" enctype="multipart/form-data" action="atualizar.php" class="form">
-
-	    <!--	  
-	    <select id="opcoes" class="form-control" ng-model="update.tipo">
-			<option value="">Tipo de produto</option>
-			<option value="Telefone">Telefone</option>
-			<option value="Relógio">Relógio</option>
-			<option value="TV">TV</option>
-	    </select>
-	    -->
 	    
-	    <input type="text" ng-model="update.tipo" class="form-control" placeholder="Produto: TV" id="tipo"/>
-	    
+	    <input type="text" ng-model="update.tipo" class="form-control" placeholder="Produto: TV" id="tipo"/>	  
 	    <input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="valor" class="form-control" ng-model="update.valor" placeholder="Valor - Exemplo: 10.00"/>
 	    <input type="number" ng-model="update.qtd" class="form-control" placeholder="Quantidade - Exemplo: 2"/>
 	    <button type="submit" ng-click="editarOk()" ng-submit="editarOk()" class="glyphicon glyphicon-edit btn btn-primary btn-block"></button>
@@ -193,17 +168,14 @@
 	  </form>
 
 	  <form ng-show="!update" name="inserir" method="post" enctype="multipart/form-data" action="inserir.php" class="form">
-	  
 			    
-		<input type="text" ng-model="user.tipo" class="form-control" placeholder="Produto: TV" id="tipo"/>   	
-				  
+		<input type="text" ng-model="user.tipo" class="form-control" placeholder="Produto: TV" id="tipo"/>   					  
 		<input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="valor" class="form-control" ng-model="user.valor" placeholder="Valor - Exemplo: 10.00"/>
 		<input type="number" id="qtd" class="form-control" ng-model="user.qtd" placeholder="Quantidade - Exemplo: 2"/>
 		
 	  </form>
 
-	  <button id="salvar" class="glyphicon glyphicon-ok btn btn-primary btn-block" ng-click="salvar(user)" ng-disabled="!user.tipo || !user.valor || !user.qtd || user.qtd <= 0 || user.valor <= 0">
-	  
+	  <button id="salvar" class="glyphicon glyphicon-ok btn btn-primary btn-block" ng-click="salvar(user)" ng-disabled="!user.tipo || !user.valor || !user.qtd || user.qtd <= 0 || user.valor <= 0">	  
 	  </button> 
 
 	  <button class="btn btn-primary btn-block" ng-disabled="update" ng-click="erro()">Sobre</button>
