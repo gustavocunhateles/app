@@ -1,6 +1,6 @@
 Este é um projeto em AngularJS de uma Loja Virtual que possui as funcionalidades básicas de inclusão, edição e exclusão de produtos.
 
-https://gustavocunhateles.github.io/loja/
+https://angular-nine-liard.vercel.app/
 
 Inserindo produtos:
 
