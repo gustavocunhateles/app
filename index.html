@@ -7,20 +7,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css rel="stylesheet"">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/>
-	<link href="app.css" rel="stylesheet"/>
+	<link href="app.css" rel="stylesheet"/> <!--Estilo da página-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
-	<script src="app.js"></script>
+	<script src="app.js"></script> <!--AngularJS da página-->
 </head>
 
 <body ng-controller="appCtrl" background="hero-bg.jpg">
     
+	<!--Cabeçalho da página-->
 	<legend class="navbar navbar-inverse">
 		<nav class="navbar navbar-dark bg-dark">
 			Estoque de produtos      
     		</nav>
 	</legend>
 	
+	<!--Conteúdo da página-->
 	<div class="jumbotron">
 	
 		<form>
@@ -32,54 +34,61 @@
 
 				<!--Cabeçalho da tabela-->
 				<tr>
-					<th id="coluna1">Tipo</th>
-					<th id="coluna2">Valor</th>	
-					<th id="coluna3">Quantidade</th>
-					
-					<th></th>
-					<th></th>
+					<th id="coluna1">Tipo</th> <!--Tipo-->
+					<th id="coluna2">Valor</th> <!--Valor-->	
+					<th id="coluna3">Quantidade</th> <!--Quantidade-->					
+					<th></th> <!--Botão editar-->
+					<th></th> <!--Botão apagar-->
 				</tr>
 			
 		    		<!--Exibição recursiva dos campos digitados em update ou !update-->
 		    		<tr ng-repeat="user in users">
-
-				      <td class="col-md-3" id="coluna1">{{user.tipo}}</td>
-				      <td class="col-md-3" id="coluna2">R$ {{user.valor}}</td>
-				      <td class="col-md-1" id="coluna3">{{user.qtd}}</td> 
-					
-				      <td class="col-md-1"> 
-					<button class="glyphicon glyphicon-edit btn btn-primary" ng-click="editar(user, $index)"></button> 
+				      <td class="col-md-3" id="coluna1"> <!--Tipo-->
+					      {{user.tipo}}
 				      </td>
-				      <td class="col-md-1">
-					<button class="glyphicon glyphicon-trash btn btn-danger" ng-show="users.length > 0" ng-click="apagar(users)" ng-disabled="update">
+				      <td class="col-md-3" id="coluna2"> <!--Valor-->
+					      R$ {{user.valor}}
+				      </td>
+				      <td class="col-md-1" id="coluna3"> <!--Quantidade-->
+					      {{user.qtd}}
+				      </td> 				      				     
+				      <td class="col-md-1">  <!--Botão editar-->
+					<button class="glyphicon glyphicon-edit btn btn-primary" ng-click="editar(user, $index)"></button> 
+				      </td>			      
+				      <td class="col-md-1"> <!--Botão apagar-->
+					<button class="glyphicon glyphicon-trash btn btn-danger" 
+					ng-show="users.length > 0" ng-disabled="update" ng-click="apagar(users)">
 					</button> 
 				      </td>
-
 		    		</tr>
+				
 	  		</table>
 
 		</form>
 
-	  	<form ng-if="update" name="atualizar" method="post" enctype="multipart/form-data" action="atualizar.php" class="form">
+	  	<form ng-if="update" name="atualizar" method="post" enctype="multipart/form-data" class="form">
 	    
-		    <input type="text" ng-model="update.tipo" class="form-control" placeholder="Produto: TV" id="tipo"/>	  
-		    <input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="valor" class="form-control" ng-model="update.valor" placeholder="Valor - Exemplo: 10.00"/>
+		    <input type="text" ng-model="update.tipo" class="form-control" placeholder="Produto - Exemplo: TV" id="tipo"/>	  
+		    <input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="valor" 
+			   class="form-control" ng-model="update.valor" placeholder="Valor - Exemplo: 10.00"/>
 		    <input type="number" ng-model="update.qtd" class="form-control" placeholder="Quantidade - Exemplo: 2"/>
 		    <button type="submit" ng-click="editarOk()" ng-submit="editarOk()" class="glyphicon glyphicon-edit btn btn-primary btn-block"></button>
 
 		</form>
 
-		<form ng-show="!update" name="inserir" method="post" enctype="multipart/form-data" action="inserir.php" class="form">
+		<form ng-show="!update" name="inserir" method="post" enctype="multipart/form-data" class="form">
 
-			<input type="text" ng-model="user.tipo" class="form-control" placeholder="Produto: TV" id="tipo"/>   					  
-			<input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="valor" class="form-control" ng-model="user.valor" placeholder="Valor - Exemplo: 10.00"/>
+			<input type="text" ng-model="user.tipo" class="form-control" placeholder="Produto - Exemplo: TV" id="tipo"/>   					  
+			<input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="valor" 
+			       class="form-control" ng-model="user.valor" placeholder="Valor - Exemplo: 10.00"/>
 			<input type="number" id="qtd" class="form-control" ng-model="user.qtd" placeholder="Quantidade - Exemplo: 2"/>
 
 		</form>
 
-		<button id="salvar" class="glyphicon glyphicon-ok btn btn-primary btn-block" ng-click="salvar(user)" ng-disabled="!user.tipo || !user.valor || !user.qtd || user.qtd <= 0 || user.valor <= 0">	  
+		<button id="salvar" class="glyphicon glyphicon-ok btn btn-primary btn-block" ng-click="salvar(user)" 
+			ng-disabled="!user.tipo || !user.valor || !user.qtd || user.qtd <= 0 || user.valor <= 0">	  
 		</button> 
-	  	<button class="btn btn-primary btn-block" ng-disabled="update" ng-click="erro()">
+	  	<button class="btn btn-primary btn-block" ng-click="erro()" ng-disabled="update">
 			Sobre
 		</button>
 	</div>
